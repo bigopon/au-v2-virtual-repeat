@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/basic-app", "destination": "/" },
+    { "source": "container-animation-transition", "destination": "/" },
+    { "source": "/table-app", "destination": "/" }
+  ]
+}

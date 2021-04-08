@@ -1,0 +1,24 @@
+<import from="./welcome-page"></import>
+<import from="./about-page.html"></import>
+<import from="./missing-page"></import>
+<import from="./shared/virtual-repeat-monitor"></import>
+
+<import from="./apps/container-animation-transition"></import>
+<import from="./apps/basic-app"></import>
+<import from="./apps/table-app"></import>
+
+<nav>
+  <a load="basic-app">Basic usage</a>
+  <a load="container-animation-transition">With scroller transition animation</a>
+  <a load="table-app">Basic table usage</a>
+</nav>
+
+<!-- <div style="overflow: auto; height: 500px">
+  <div virtual-repeat.for="item of items" style="height: 50px">${item.name}</div>
+  <h1>Divider</h1>
+  <div virtual-repeat.for="item of items" style="height: 50px">${item.name}</div>
+</div> -->
+
+<au-viewport default="welcome-page" fallback="missing-page"></au-viewport>
+
+<virtual-repeat-monitor></virtual-repeat-monitor>
