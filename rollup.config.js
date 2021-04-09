@@ -32,8 +32,10 @@ export default [
       {
         file: `dist/amd/${pkgName}.js`,
         format: 'amd',
-        id: pkgName,
         sourcemap: true,
+        amd: {
+          id: pkgName,
+        }
       },
     ],
     external: [

@@ -2,6 +2,8 @@
 
 A plugin for doing virtualization with Aurelia 2
 
+[DEMO](https://aurelia-v2-virtual-repeat.vercel.app/)
+
 ## Installation
 
 To install the plugin, do:

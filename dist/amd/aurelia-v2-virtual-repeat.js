@@ -4,32 +4,6 @@ define(['exports', '@aurelia/kernel', '@aurelia/runtime', '@aurelia/runtime-html
     const IScrollerObsererLocator = kernel.DI.createInterface('IScrollerObsererLocator');
     const ICollectionStrategyLocator = kernel.DI.createInterface('ICollectionStrategyLocator');
 
-    /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation.
-
-    Permission to use, copy, modify, and/or distribute this software for any
-    purpose with or without fee is hereby granted.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
-
-    function __decorate(decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    }
-
-    function __metadata(metadataKey, metadataValue) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-    }
-
     function unwrapExpression(expression) {
         let unwrapped = false;
         while (expression instanceof runtime.BindingBehaviorExpression) {
@@ -87,7 +61,7 @@ define(['exports', '@aurelia/kernel', '@aurelia/runtime', '@aurelia/runtime-html
         }
     };
 
-    exports.VirtualRepeat = class VirtualRepeat {
+    class VirtualRepeat {
         constructor(location, instruction, parent, factory, container, platform) {
             var _a;
             this.location = location;
@@ -373,22 +347,15 @@ define(['exports', '@aurelia/kernel', '@aurelia/runtime', '@aurelia/runtime-html
             views.push(view);
             return view;
         }
-    };
-    __decorate([
-        runtimeHtml.bindable,
-        __metadata("design:type", String)
-    ], exports.VirtualRepeat.prototype, "local", void 0);
-    __decorate([
-        runtimeHtml.bindable({ primary: true }),
-        __metadata("design:type", Object)
-    ], exports.VirtualRepeat.prototype, "items", void 0);
-    exports.VirtualRepeat = __decorate([
-        runtimeHtml.customAttribute({
-            name: 'virtual-repeat',
-            isTemplateController: true,
-        }),
-        __metadata("design:paramtypes", [Object, runtimeHtml.HydrateTemplateController, Object, Object, Object, Object])
-    ], exports.VirtualRepeat);
+    }
+    runtimeHtml.customAttribute({
+        isTemplateController: true,
+        name: 'virtual-repeat',
+        bindables: {
+            local: { property: 'local' },
+            items: { property: 'items', primary: true }
+        }
+    })(VirtualRepeat);
     class CollectionObservationMediator {
         constructor(repeat, key) {
             this.repeat = repeat;
@@ -711,7 +678,7 @@ define(['exports', '@aurelia/kernel', '@aurelia/runtime', '@aurelia/runtime-html
 
     const DefaultVirtualRepeatConfiguration = {
         register(container) {
-            return container.register(ScrollerObserverLocator, CollectionStrategyLocator, DefaultDomRenderer, exports.VirtualRepeat);
+            return container.register(ScrollerObserverLocator, CollectionStrategyLocator, DefaultDomRenderer, VirtualRepeat);
         }
     };
 
@@ -723,6 +690,7 @@ define(['exports', '@aurelia/kernel', '@aurelia/runtime', '@aurelia/runtime-html
     exports.IScrollerObsererLocator = IScrollerObsererLocator;
     exports.ScrollerObserver = ScrollerObserver;
     exports.ScrollerObserverLocator = ScrollerObserverLocator;
+    exports.VirtualRepeat = VirtualRepeat;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
