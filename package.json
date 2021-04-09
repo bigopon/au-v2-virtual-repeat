@@ -13,6 +13,9 @@
     "url": "https://github.com/bigopon/aurelia-v2-virtual-repeat"
   },
   "bugs": "https://github.com/bigopon/aurelia-v2-virtual-repeat/issues",
+  "main": "dist/cjs/aurelia-v2-virtual-repeat.js",
+  "module": "dist/es2017/aurelia-v2-virtual-repeat.js",
+  "types": "dist/types/index.d.ts",
   "license": "MIT",
   "files": [
     "dist",

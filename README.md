@@ -4,6 +4,10 @@ A plugin for doing virtualization with Aurelia 2
 
 [DEMO](https://aurelia-v2-virtual-repeat.vercel.app/)
 
+Size:
+- Minified: 12KB
+- Minified + gzip: 4KB
+
 ## Installation
 
 To install the plugin, do:

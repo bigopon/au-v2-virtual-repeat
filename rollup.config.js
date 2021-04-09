@@ -37,6 +37,11 @@ export default [
           id: pkgName,
         }
       },
+      {
+        file: `dist/cjs/${pkgName}.js`,
+        format: 'cjs',
+        sourcemap: true
+      }
     ],
     external: [
       '@aurelia/kernel',
