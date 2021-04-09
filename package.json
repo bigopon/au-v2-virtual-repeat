@@ -1,7 +1,7 @@
 {
   "name": "aurelia-v2-virtual-repeat",
   "description": "An Aurelia 2 virtual repeat implementation.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/bigopon/aurelia-v2-virtual-repeat"

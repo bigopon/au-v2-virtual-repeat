@@ -1,4 +1,4 @@
-define(['exports', '@aurelia/kernel', '@aurelia/runtime', '@aurelia/runtime-html'], function (exports, kernel, runtime, runtimeHtml) { 'use strict';
+define('aurelia-v2-virtual-repeat', ['exports', '@aurelia/kernel', '@aurelia/runtime', '@aurelia/runtime-html'], function (exports, kernel, runtime, runtimeHtml) { 'use strict';
 
     const IDomRenderer = kernel.DI.createInterface('IDomRenderer');
     const IScrollerObsererLocator = kernel.DI.createInterface('IScrollerObsererLocator');
