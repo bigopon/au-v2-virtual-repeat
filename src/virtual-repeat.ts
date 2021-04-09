@@ -58,13 +58,20 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
   // bindable
   items: Collection;
 
+  /**@internal */
   private iterable: IsBindingBehavior;
+  /**@internal */
   private forOf: ForOfStatement;
+  /**@internal */
   private hasWrapExpression: boolean;
+  /**@internal */
   private obsMediator: CollectionObservationMediator;
 
+  /**@internal */
   private views: ISyntheticView[] = [];
+  /**@internal */
   private taskQueue: IPlatform['domWriteQueue'];
+  /**@internal */
   private task: ITask;
 
   private itemHeight = 0;
@@ -170,6 +177,7 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
     this.itemHeight = 0;
   }
 
+  /**@internal */
   public itemsChanged(items: Collection): void {
     const controller = this.$controller;
     const collectionStrategy = this.collectionStrategy = this.container.get(ICollectionStrategyLocator).getStrategy(items);
@@ -264,6 +272,14 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
     );
   }
 
+  /**
+   * The value returned by HTMLElement.prototype.scrollTop isn't always reliable.
+   * When the virtual repeater is placed after a long list of elements, its "real" scrolltop
+   * will be different with this value. An example is virtual repeat on table,
+   * the header shouldn't be of the scroll top calculation
+   *
+   * @internal
+   */
   private calcRealScrollTop(scrollerInfo: IScrollerInfo) {
     const scroller_scroll_top = scrollerInfo.scrollTop;
     const top_buffer_distance = getDistanceToScroller(this.dom.top, scrollerInfo.scroller);
@@ -273,6 +289,7 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
     return real_scroll_top;
   }
 
+  /**@internal */
   private measureBuffer(scrollerInfo: IScrollerInfo, viewCount: number, collectionSize: number, itemHeight: number): IBufferCalculation {
     const real_scroll_top = this.calcRealScrollTop(scrollerInfo);
     let first_index_after_scroll_adjustment = real_scroll_top === 0
@@ -307,6 +324,7 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
     task?.cancel();
   }
 
+  /**@internal */
   private handleScroll(scrollerInfo: IScrollerInfo): void {
     if (this.itemHeight === 0) {
       return;
@@ -489,6 +507,7 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
   }
 }
 
+// avoid excessive code generation, if it doesn't affect readability too much
 customAttribute({
   isTemplateController: true,
   name: 'virtual-repeat',
