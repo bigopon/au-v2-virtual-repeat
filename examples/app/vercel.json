@@ -1,7 +1,10 @@
 {
   "redirects": [
     { "source": "/basic-app", "destination": "/" },
-    { "source": "container-animation-transition", "destination": "/" },
+    { "source": "/container-animation-transition", "destination": "/" },
     { "source": "/table-app", "destination": "/" }
-  ]
+  ],
+  "github": {
+    "silent": true
+  }
 }
