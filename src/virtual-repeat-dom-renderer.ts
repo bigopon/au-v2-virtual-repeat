@@ -43,6 +43,9 @@ export class DefaultDomRenderer implements IDomRenderer {
 }
 
 class DefaultDom implements IVirtualRepeatDom {
+  // for debugging purposes
+  public tH: number = 0;
+  public bH: number = 0;
   public constructor(
     public readonly anchor: HTMLElement | IRenderLocation,
     public readonly top: HTMLElement,
@@ -54,8 +57,8 @@ class DefaultDom implements IVirtualRepeatDom {
   }
 
   public update(top: number, bot: number): void {
-    this.top.style.height = top + 'px';
-    this.bottom.style.height = bot + 'px';
+    this.top.style.height = (this.tH = top) + 'px';
+    this.bottom.style.height = (this.bH = bot) + 'px';
   }
 
   public dispose(): void {

@@ -2,10 +2,12 @@
   "name": "aurelia-v2-virtual-repeat",
   "description": "An Aurelia 2 virtual repeat implementation.",
   "version": "0.1.1",
+  "keywords": ["aurelia", "virtual repeat", "virtualization", "infinite scrolling"],
   "repository": {
     "type": "git",
     "url": "https://github.com/bigopon/aurelia-v2-virtual-repeat"
   },
+  "bugs": "https://github.com/bigopon/aurelia-v2-virtual-repeat/issues",
   "license": "MIT",
   "files": [
     "dist",
