@@ -1,4 +1,4 @@
-import { IContainer, IServiceLocator, ITask } from "@aurelia/kernel";
+import { IContainer } from "@aurelia/kernel";
 import {
   Scope,
   BindingIdentifier,
@@ -28,24 +28,34 @@ import {
 import {
   unwrapExpression,
 } from "./repeat-utilities";
-import { ICollectionStrategy, ICollectionStrategyLocator, IDomRenderer, IScrollerInfo, IScrollerObsererLocator, IScrollerObserver, IScrollerSubscriber, IVirtualRepeatDom, IVirtualRepeater } from "./interfaces";
+import {
+  ICollectionStrategyLocator,
+  IDomRenderer,
+  IScrollerObsererLocator,
+} from "./interfaces";
+import type {
+  ICollectionStrategy,
+  IScrollerInfo,
+  IScrollerObserver,
+  IScrollerSubscriber,
+  IVirtualRepeatDom,
+  IVirtualRepeater
+} from "./interfaces";
 import { calcOuterHeight, getDistanceToScroller } from "./utilities-dom";
+
+import type { IServiceLocator, ITask } from "@aurelia/kernel";
 
 export interface VirtualRepeat extends ICustomAttributeViewModel {}
 
-@customAttribute({
-  name: 'virtual-repeat',
-  isTemplateController: true,
-})
 export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
   public static get inject() {
     return [IRenderLocation, IInstruction, IController, IViewFactory, IContainer, IPlatform];
   }
 
-  @bindable
+  // bindable
   local: string;
 
-  @bindable
+  // bindable
   items: Collection;
 
   private iterable: IsBindingBehavior;
@@ -148,7 +158,7 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
     if (itemHeight === 0) {
       return Calculation.none;
     }
-    const minViewsRequired = Math.floor(scrollerInfo.height / itemHeight) + 1;
+    const minViewsRequired = Math.floor(scrollerInfo.height / itemHeight);
     return Calculation.from(SizingSignals.has_sizing, minViewsRequired);
   }
 
@@ -478,6 +488,15 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
     return view;
   }
 }
+
+customAttribute({
+  isTemplateController: true,
+  name: 'virtual-repeat',
+  bindables: {
+    local: { property: 'local' },
+    items: { property: 'items', primary: true }
+  }
+})(VirtualRepeat);
 
 class CollectionObservationMediator {
   private c: Collection;

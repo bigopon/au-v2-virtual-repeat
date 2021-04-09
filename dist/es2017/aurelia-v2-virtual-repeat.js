@@ -157,7 +157,7 @@ let VirtualRepeat = class VirtualRepeat {
         if (itemHeight === 0) {
             return Calculation.none;
         }
-        const minViewsRequired = Math.floor(scrollerInfo.height / itemHeight) + 1;
+        const minViewsRequired = Math.floor(scrollerInfo.height / itemHeight);
         return Calculation.from(2, minViewsRequired);
     }
     resetCalculation() {
@@ -381,7 +381,7 @@ __decorate([
     __metadata("design:type", String)
 ], VirtualRepeat.prototype, "local", void 0);
 __decorate([
-    bindable,
+    bindable({ primary: true }),
     __metadata("design:type", Object)
 ], VirtualRepeat.prototype, "items", void 0);
 VirtualRepeat = __decorate([

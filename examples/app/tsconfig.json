@@ -9,7 +9,12 @@
     "target": "ES2017",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "lib": ["es2020", "DOM"]
+    "lib": ["es2020", "DOM"],
+    "paths": {
+      "aurelia-v2-virtual-repeat": [
+        "../../src/index.ts"
+      ]
+    }
   },
   "include": [
     "src"

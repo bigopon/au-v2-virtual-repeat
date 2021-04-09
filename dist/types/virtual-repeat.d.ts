@@ -1,7 +1,8 @@
-import { IContainer, IServiceLocator } from "@aurelia/kernel";
+import { IContainer } from "@aurelia/kernel";
 import { Collection } from '@aurelia/runtime';
 import { IInstruction, IController, IViewFactory, HydrateTemplateController, IHydratedComponentController, ICustomAttributeViewModel, IRenderLocation, IPlatform } from '@aurelia/runtime-html';
 import { IScrollerInfo, IScrollerSubscriber, IVirtualRepeater } from "./interfaces";
+import type { IServiceLocator } from "@aurelia/kernel";
 export interface VirtualRepeat extends ICustomAttributeViewModel {
 }
 export declare class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {

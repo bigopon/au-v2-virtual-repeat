@@ -25,5 +25,28 @@ export default [
         sourceMap: true,
       })
     ]
+  },
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        file: `dist/amd/${pkgName}.js`,
+        format: 'amd',
+        id: pkgName,
+        sourcemap: true,
+      },
+    ],
+    external: [
+      '@aurelia/kernel',
+      '@aurelia/runtime',
+      '@aurelia/runtime-html',
+    ],
+    plugins: [
+      typescript({
+        target: 'es2017',
+        removeComments: true,
+        sourceMap: true,
+      })
+    ]
   }
 ];

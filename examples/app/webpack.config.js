@@ -17,6 +17,7 @@ const postcssLoader = {
   }
 };
 
+/**@returns {import('webpack').Configuration} */
 module.exports = function(env, { runTest, analyze }) {
   const production = env.production || process.env.NODE_ENV === 'production';
   const test = env.test || process.env.NODE_ENV === 'test';
@@ -26,16 +27,18 @@ module.exports = function(env, { runTest, analyze }) {
     entry: test ? './test/all-spec.ts' :  './src/main.ts',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'entry-bundle.js'
+      filename: 'bundle.[contenthash].js'
     },
     resolve: {
       extensions: ['.ts', '.js'],
-      modules: [path.resolve(__dirname, 'src'), 'node_modules']
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        'aurelia-v2-virtual-repeat': path.resolve(__dirname, '../../src')
+      }
     },
     devServer: {
       historyApiFallback: true,
       open: !process.env.CI,
-      port: 9000,
       lazy: false
     },
     module: {
@@ -51,7 +54,9 @@ module.exports = function(env, { runTest, analyze }) {
     },
     plugins: [
       new HtmlWebpackPlugin({ template: 'index.ejs' }),
-      analyze && new BundleAnalyzerPlugin(),
+      analyze && new BundleAnalyzerPlugin({
+        analyzerMode: 'static'
+      }),
       test && runTest && new WebpackShellPluginNext({
         dev: false,
         swallowError: true,

@@ -1,9 +1,6 @@
 import Aurelia, { RouterConfiguration } from 'aurelia';
 import { MyApp } from './my-app';
-import { VirtualRepeat } from './virtual-repeat/virtual-repeat';
-import { CollectionStrategyLocator } from './virtual-repeat/collection-strategy';
-import { ScrollerObserverLocator } from './virtual-repeat/scroller-observer';
-import { DefaultDomRenderer } from './virtual-repeat/virtual-repeat-dom-renderer';
+import { DefaultVirtualRepeatConfiguration, VirtualRepeat } from 'aurelia-v2-virtual-repeat';
 import { Scrollbar } from './shared/scrollbar';
 
 VirtualRepeat.prototype['created'] = function() {
@@ -13,11 +10,7 @@ VirtualRepeat.prototype['created'] = function() {
 Aurelia
   .register(
     RouterConfiguration,
-    // ...DefaultComponents,
-    ScrollerObserverLocator,
-    CollectionStrategyLocator,
-    DefaultDomRenderer,
-    VirtualRepeat,
+    DefaultVirtualRepeatConfiguration,
     Scrollbar,
   )
   // To use HTML5 pushState routes, replace previous line with the following
