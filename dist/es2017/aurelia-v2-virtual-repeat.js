@@ -639,13 +639,15 @@ class DefaultDom {
         this.anchor = anchor;
         this.top = top;
         this.bottom = bottom;
+        this.tH = 0;
+        this.bH = 0;
     }
     getScroller() {
         return getScrollerElement(this.anchor);
     }
     update(top, bot) {
-        this.top.style.height = top + 'px';
-        this.bottom.style.height = bot + 'px';
+        this.top.style.height = (this.tH = top) + 'px';
+        this.bottom.style.height = (this.bH = bot) + 'px';
     }
     dispose() {
         this.top.remove();

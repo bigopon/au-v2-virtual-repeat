@@ -14,24 +14,13 @@ export declare class VirtualRepeat implements IScrollerSubscriber, IVirtualRepea
     static get inject(): (import("@aurelia/kernel").InterfaceSymbol<IRenderLocation<ChildNode>> | import("@aurelia/kernel").InterfaceSymbol<IInstruction> | import("@aurelia/kernel").InterfaceSymbol<IController<import("@aurelia/runtime-html").IViewModel>> | import("@aurelia/kernel").InterfaceSymbol<IViewFactory> | import("@aurelia/kernel").InterfaceSymbol<IContainer> | import("@aurelia/kernel").InterfaceSymbol<IPlatform>)[];
     local: string;
     items: Collection;
-    private iterable;
-    private forOf;
-    private hasWrapExpression;
-    private obsMediator;
-    private views;
-    private taskQueue;
-    private task;
     private itemHeight;
     private minViewsRequired;
     private collectionStrategy;
     private dom;
     private scrollerObserver;
     constructor(location: IRenderLocation, instruction: HydrateTemplateController, parent: IHydratedComponentController, factory: IViewFactory, container: IServiceLocator, platform: IPlatform);
-    itemsChanged(items: Collection): void;
-    private calcRealScrollTop;
-    private measureBuffer;
     handleScrollerChange(scrollerInfo: IScrollerInfo): void;
-    private handleScroll;
 }
 export declare const enum SizingSignals {
     none = 0,
