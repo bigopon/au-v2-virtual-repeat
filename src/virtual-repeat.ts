@@ -88,7 +88,7 @@ export class VirtualRepeat implements IScrollerSubscriber, IVirtualRepeater {
     public readonly container: IServiceLocator,
     platform: IPlatform,
   ) {
-    const iteratorInstruction = instruction.instructions[0] as IteratorBindingInstruction;
+    const iteratorInstruction = (<any>instruction).props[0] as IteratorBindingInstruction;
     const forOf = iteratorInstruction.from as ForOfStatement;
     const iterable = this.iterable = unwrapExpression(forOf.iterable) ?? forOf.iterable;
     const hasWrapExpression = this.hasWrapExpression = forOf.iterable !== iterable;
